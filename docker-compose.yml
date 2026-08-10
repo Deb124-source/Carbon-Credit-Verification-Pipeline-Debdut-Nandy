@@ -1,0 +1,11 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      API_KEY: carbon-x-dev-key
+      DATABASE_URL: sqlite:////app/carbon_x.db
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
