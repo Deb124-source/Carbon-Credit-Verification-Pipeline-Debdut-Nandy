@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Carbon-X carbon credit verification dashboard">
+<title>Carbon-X — Verification Pipeline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+<div class="noise"></div>
+
+<header class="topbar">
+<a class="brand" href="/">
+<span class="brand-mark"><i></i><i></i><i></i></span>
+<span>CARBON<span class="brand-x">X</span></span>
+</a>
+
+<nav>
+<a class="active" href="#overview">Overview</a>
+<a href="#verify">Verify</a>
+<a href="#how">How it works</a>
+<a href="/docs" target="_blank">API Docs ↗</a>
+</nav>
+
+<button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+<span class="sun">☼</span>
+<span class="moon">◐</span>
+</button>
+</header>
+
+<main>
+
+<section id="overview" class="hero">
+<div class="hero-copy">
+
+<div class="eyebrow">
+<span class="pulse"></span>
+VERIFICATION INFRASTRUCTURE
+</div>
+
+<h1>
+Measure the saving.<br>
+<em>Trust the claim.</em>
+</h1>
+
+<p class="hero-text">
+Carbon-X turns household energy telemetry into auditable carbon-saving claims, with baseline-aware calculations and an anomaly detection gate before verification.
+</p>
+
+<div class="hero-actions">
+<a class="button primary" href="#verify">
+Verify a claim <span>→</span>
+</a>
+
+<a class="button ghost" href="#how">
+Explore pipeline
+</a>
+</div>
+
+</div>
+
+<div class="hero-panel">
+
+<div class="panel-head">
+<span>LIVE PIPELINE</span>
+<span class="live-dot">OPERATIONAL</span>
+</div>
+
+<div class="pipeline">
+
+<div class="pipe-step done">
+<b>01</b>
+<span>Telemetry</span>
+<small>ingested</small>
+</div>
+
+<div class="pipe-line"></div>
+
+<div class="pipe-step done">
+<b>02</b>
+<span>Baseline</span>
+<small>calculated</small>
+</div>
+
+<div class="pipe-line"></div>
+
+<div class="pipe-step current">
+<b>03</b>
+<span>Claim</span>
+<small>verified</small>
+</div>
+
+<div class="pipe-line"></div>
+
+<div class="pipe-step">
+<b>04</b>
+<span>Notarize</span>
+<small>ready</small>
+</div>
+
+</div>
+
+<div class="hero-foot">
+<span>Isolation Forest</span>
+<span>•</span>
+<span>Gap-aware savings</span>
+<span>•</span>
+<span>Audit-ready</span>
+</div>
+
+</div>
+</section>
+
+<section class="stats-grid">
+
+<article class="stat-card">
+<span class="stat-label">BASELINE WINDOW</span>
+<strong>30 <small>days</small></strong>
+<p>Household-relative consumption profile</p>
+</article>
+
+<article class="stat-card">
+<span class="stat-label">ANOMALY MODEL</span>
+<strong>IF <small>200 trees</small></strong>
+<p>Isolation Forest trained on non-fraud households</p>
+</article>
+
+<article class="stat-card">
+<span class="stat-label">DECISION BANDS</span>
+<strong>3 <small>states</small></strong>
+<p>Approved, review, or rejected</p>
+</article>
+
+<article class="stat-card accent">
+<span class="stat-label">SYSTEM</span>
+<strong><span class="status-dot"></span>LIVE</strong>
+<p id="healthText">Checking API health…</p>
+</article>
+
+</section>
+
+<section id="verify" class="verify-section">
+
+<div class="section-kicker">CLAIM VERIFICATION</div>
+
+<div class="verify-layout">
+
+<div class="verify-intro">
+
+<h2>
+Put a household<br>
+through the gate.
+</h2>
+
+<p>
+Enter a household ID and a claim period. Carbon-X checks the household baseline, calculates savings, then applies the fraud/anomaly score.
+</p>
+
+<div class="decision-key">
+
+<div>
+<span class="key-dot approved"></span>
+<div>
+<b>Auto approved</b>
+<small>score &lt; 0.45</small>
+</div>
+</div>
+
+<div>
+<span class="key-dot review"></span>
+<div>
+<b>Review</b>
+<small>0.45 – 0.75</small>
+</div>
+</div>
+
+<div>
+<span class="key-dot rejected"></span>
+<div>
+<b>Rejected</b>
+<small>score ≥ 0.75</small>
+</div>
+</div>
+
+</div>
+</div>
+
+<form id="claimForm" class="verify-card">
+
+<div class="card-title">
+
+<div>
+<span class="mini-label">NEW VERIFICATION</span>
+<h3>Carbon claim</h3>
+</div>
+
+<span class="secure-badge">API SECURED</span>
+
+</div>
+
+<label>
+Household ID
+<input id="householdId" value="HH001" placeholder="e.g. HH001" required>
+</label>
+
+<div class="two-col">
+
+<label>
+Period start
+<input id="periodStart" type="datetime-local" required>
+</label>
+
+<label>
+Period end
+<input id="periodEnd" type="datetime-local" required>
+</label>
+
+</div>
+
+<label>
+API key
+<input id="apiKey" type="password" placeholder="Enter X-API-Key" autocomplete="off">
+<small class="field-note">
+Used only for the request; not displayed in results.
+</small>
+</label>
+
+<button class="button primary full" type="submit">
+<span>Run verification</span>
+<span class="button-arrow">→</span>
+</button>
+
+<div id="formError" class="form-error" hidden></div>
+
+</form>
+
+</div>
+</section>
+
+<section id="result" class="result-section" hidden>
+
+<div class="section-kicker">VERIFICATION RESULT</div>
+
+<div class="result-card">
+
+<div class="result-main">
+
+<div>
+<span class="mini-label">DECISION</span>
+<h2 id="decisionText">—</h2>
+<p id="decisionSub">—</p>
+</div>
+
+<div class="score-ring" id="scoreRing">
+<span id="scoreValue">0.00</span>
+<small>fraud score</small>
+</div>
+
+</div>
+
+<div class="result-metrics">
+
+<div>
+<span>Household</span>
+<b id="resultHousehold">—</b>
+</div>
+
+<div>
+<span>CO₂e saved</span>
+<b id="resultCo2">—</b>
+</div>
+
+<div>
+<span>Energy saved</span>
+<b id="resultKwh">—</b>
+</div>
+
+<div>
+<span>Coverage</span>
+<b id="resultCoverage">—</b>
+</div>
+
+</div>
+
+<details class="raw-details">
+<summary>View API response</summary>
+<pre id="rawResponse"></pre>
+</details>
+
+</div>
+</section>
+
+<section id="how" class="how-section">
+
+<div class="section-kicker">THE PIPELINE</div>
+
+<div class="how-heading">
+
+<h2>
+Built around evidence,<br>
+not a black box.
+</h2>
+
+<p>
+Every stage has a specific job. The model is the gate, not the whole system.
+</p>
+
+</div>
+
+<div class="steps">
+
+<article>
+<span>01</span>
+<h3>Ingest</h3>
+<p>
+Telemetry is validated and deduplicated before it enters the pipeline.
+</p>
+</article>
+
+<article>
+<span>02</span>
+<h3>Baseline</h3>
+<p>
+The first 30 days establish a household-specific hourly consumption profile.
+</p>
+</article>
+
+<article>
+<span>03</span>
+<h3>Calculate</h3>
+<p>
+Gap-aware savings avoid inflating claims when telemetry is missing.
+</p>
+</article>
+
+<article>
+<span>04</span>
+<h3>Screen</h3>
+<p>
+Household-relative features pass through an Isolation Forest anomaly gate.
+</p>
+</article>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+
+<div class="footer-brand">
+CARBON<span>X</span>
+</div>
+
+<p>
+Carbon credit verification infrastructure · FastAPI · SQLAlchemy · Isolation Forest
+</p>
+
+<a href="/docs" target="_blank">
+Open API documentation ↗
+</a>
+
+</footer>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>
