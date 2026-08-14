@@ -7,7 +7,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN python generate_data.py && python -m scripts.train_model
+RUN RUN python generate_data.py && python -m scripts.train_model
 
 EXPOSE 8000
 

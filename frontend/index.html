@@ -1,656 +1,622 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Carbon-X carbon credit verification dashboard">
 <title>Carbon-X — Verification Pipeline</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+>
 
-<!-- Local stylesheet -->
-<link rel="stylesheet" href="style.css">
+<!-- Carbon-X stylesheet -->
+<link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
 
 <div class="noise"></div>
 
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header class="topbar">
 
-<a class="brand" href="#overview">
-<span class="brand-mark">
-<i></i>
-<i></i>
-<i></i>
-</span>
+    <a class="brand" href="/">
+        <span class="brand-mark">
+            <i></i>
+            <i></i>
+            <i></i>
+        </span>
 
-<span>CARBON<span class="brand-x">X</span></span>
-</a>
+        <span>
+            CARBON<span class="brand-x">X</span>
+        </span>
+    </a>
 
-<nav>
-<a class="active" href="#overview">Overview</a>
-<a href="#verify">Verify</a>
-<a href="#how">How it works</a>
-<a href="http://127.0.0.1:8000/docs" target="_blank">API Docs ↗</a>
-</nav>
+    <nav>
+        <a class="active" href="#overview">Overview</a>
+        <a href="#verify">Verify</a>
+        <a href="#how">How it works</a>
+        <a href="/docs" target="_blank">API Docs ↗</a>
+    </nav>
 
-<button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
-<span class="sun">☼</span>
-<span class="moon">◐</span>
-</button>
+    <button
+        id="themeToggle"
+        class="theme-toggle"
+        aria-label="Toggle theme"
+        type="button"
+    >
+        <span class="sun">☼</span>
+        <span class="moon">◐</span>
+    </button>
 
 </header>
 
 
 <main>
 
-<!-- =========================
-     OVERVIEW / HERO
-========================= -->
+<!-- =====================================================
+     HERO / OVERVIEW
+===================================================== -->
 
 <section id="overview" class="hero">
 
-<div class="hero-copy">
+    <div class="hero-copy">
 
-<div class="eyebrow">
-<span class="pulse"></span>
-VERIFICATION INFRASTRUCTURE
-</div>
+        <div class="eyebrow">
+            <span class="pulse"></span>
+            VERIFICATION INFRASTRUCTURE
+        </div>
 
-<h1>
-Measure the saving.<br>
-<em>Trust the claim.</em>
-</h1>
+        <h1>
+            Measure the saving.<br>
+            <em>Trust the claim.</em>
+        </h1>
 
-<p class="hero-text">
-Carbon-X turns household energy telemetry into auditable carbon-saving claims, with baseline-aware calculations and an anomaly detection gate before verification.
-</p>
+        <p class="hero-text">
+            Carbon-X turns household energy telemetry into auditable
+            carbon-saving claims, with baseline-aware calculations and
+            an anomaly detection gate before verification.
+        </p>
 
-<div class="hero-actions">
+        <div class="hero-actions">
 
-<a class="button primary" href="#verify">
-Verify a claim <span>→</span>
-</a>
+            <a class="button primary" href="#verify">
+                Verify a claim
+                <span>→</span>
+            </a>
 
-<a class="button ghost" href="#how">
-Explore pipeline
-</a>
+            <a class="button ghost" href="#how">
+                Explore pipeline
+            </a>
 
-</div>
+        </div>
 
-</div>
-
-
-<div class="hero-panel">
-
-<div class="panel-head">
-<span>LIVE PIPELINE</span>
-<span class="live-dot">OPERATIONAL</span>
-</div>
+    </div>
 
 
-<div class="pipeline">
+    <div class="hero-panel">
 
-<div class="pipe-step done">
-<b>01</b>
-<span>Telemetry</span>
-<small>ingested</small>
-</div>
+        <div class="panel-head">
+            <span>LIVE PIPELINE</span>
 
-<div class="pipe-line"></div>
-
-<div class="pipe-step done">
-<b>02</b>
-<span>Baseline</span>
-<small>calculated</small>
-</div>
-
-<div class="pipe-line"></div>
-
-<div class="pipe-step current">
-<b>03</b>
-<span>Claim</span>
-<small>verified</small>
-</div>
-
-<div class="pipe-line"></div>
-
-<div class="pipe-step">
-<b>04</b>
-<span>Notarize</span>
-<small>ready</small>
-</div>
-
-</div>
+            <span class="live-dot">
+                OPERATIONAL
+            </span>
+        </div>
 
 
-<div class="hero-foot">
-<span>Isolation Forest</span>
-<span>•</span>
-<span>Gap-aware savings</span>
-<span>•</span>
-<span>Audit-ready</span>
-</div>
+        <div class="pipeline">
 
-</div>
+            <div class="pipe-step done">
+                <b>01</b>
+                <span>Telemetry</span>
+                <small>ingested</small>
+            </div>
+
+            <div class="pipe-line"></div>
+
+            <div class="pipe-step done">
+                <b>02</b>
+                <span>Baseline</span>
+                <small>calculated</small>
+            </div>
+
+            <div class="pipe-line"></div>
+
+            <div class="pipe-step current">
+                <b>03</b>
+                <span>Claim</span>
+                <small>verified</small>
+            </div>
+
+            <div class="pipe-line"></div>
+
+            <div class="pipe-step">
+                <b>04</b>
+                <span>Notarize</span>
+                <small>ready</small>
+            </div>
+
+        </div>
+
+
+        <div class="hero-foot">
+            <span>Isolation Forest</span>
+            <span>•</span>
+            <span>Gap-aware savings</span>
+            <span>•</span>
+            <span>Audit-ready</span>
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- =========================
-     STATISTICS
-========================= -->
+<!-- =====================================================
+     STATS
+===================================================== -->
 
 <section class="stats-grid">
 
-<article class="stat-card">
+    <article class="stat-card">
 
-<span class="stat-label">
-BASELINE WINDOW
-</span>
+        <span class="stat-label">
+            BASELINE WINDOW
+        </span>
 
-<strong>
-30 <small>days</small>
-</strong>
+        <strong>
+            30
+            <small>days</small>
+        </strong>
 
-<p>
-Household-relative consumption profile
-</p>
+        <p>
+            Household-relative consumption profile
+        </p>
 
-</article>
-
-
-<article class="stat-card">
-
-<span class="stat-label">
-ANOMALY MODEL
-</span>
-
-<strong>
-IF <small>200 trees</small>
-</strong>
-
-<p>
-Isolation Forest trained on non-fraud households
-</p>
-
-</article>
+    </article>
 
 
-<article class="stat-card">
+    <article class="stat-card">
 
-<span class="stat-label">
-DECISION BANDS
-</span>
+        <span class="stat-label">
+            ANOMALY MODEL
+        </span>
 
-<strong>
-3 <small>states</small>
-</strong>
+        <strong>
+            IF
+            <small>200 trees</small>
+        </strong>
 
-<p>
-Approved, review, or rejected
-</p>
+        <p>
+            Isolation Forest trained on non-fraud households
+        </p>
 
-</article>
+    </article>
 
 
-<article class="stat-card accent">
+    <article class="stat-card">
 
-<span class="stat-label">
-SYSTEM
-</span>
+        <span class="stat-label">
+            DECISION BANDS
+        </span>
 
-<strong>
-<span class="status-dot"></span>
-LIVE
-</strong>
+        <strong>
+            3
+            <small>states</small>
+        </strong>
 
-<p id="healthText">
-Checking API health…
-</p>
+        <p>
+            Approved, review, or rejected
+        </p>
 
-</article>
+    </article>
+
+
+    <article class="stat-card accent">
+
+        <span class="stat-label">
+            SYSTEM
+        </span>
+
+        <strong>
+            <span class="status-dot"></span>
+            LIVE
+        </strong>
+
+        <p id="healthText">
+            Checking API health…
+        </p>
+
+    </article>
 
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      CLAIM VERIFICATION
-========================= -->
+===================================================== -->
 
 <section id="verify" class="verify-section">
 
-<div class="section-kicker">
-CLAIM VERIFICATION
-</div>
+    <div class="section-kicker">
+        CLAIM VERIFICATION
+    </div>
 
 
-<div class="verify-layout">
+    <div class="verify-layout">
 
-<div class="verify-intro">
+        <div class="verify-intro">
 
-<h2>
-Put a household<br>
-through the gate.
-</h2>
+            <h2>
+                Put a household<br>
+                through the gate.
+            </h2>
 
-<p>
-Enter a household ID and a claim period. Carbon-X checks the household baseline, calculates savings, then applies the fraud/anomaly score.
-</p>
+            <p>
+                Enter a household ID and a claim period.
+                Carbon-X checks the household baseline,
+                calculates savings, then applies the
+                fraud/anomaly score.
+            </p>
 
 
-<div class="decision-key">
+            <div class="decision-key">
 
-<div>
+                <div>
+                    <span class="key-dot approved"></span>
 
-<span class="key-dot approved"></span>
+                    <div>
+                        <b>Auto approved</b>
+                        <small>score &lt; 0.45</small>
+                    </div>
+                </div>
 
-<div>
-<b>Auto approved</b>
-<small>score &lt; 0.45</small>
-</div>
 
-</div>
+                <div>
+                    <span class="key-dot review"></span>
 
+                    <div>
+                        <b>Review</b>
+                        <small>0.45 – 0.75</small>
+                    </div>
+                </div>
 
-<div>
 
-<span class="key-dot review"></span>
+                <div>
+                    <span class="key-dot rejected"></span>
 
-<div>
-<b>Review</b>
-<small>0.45 – 0.75</small>
-</div>
+                    <div>
+                        <b>Rejected</b>
+                        <small>score ≥ 0.75</small>
+                    </div>
+                </div>
 
-</div>
+            </div>
 
+        </div>
 
-<div>
 
-<span class="key-dot rejected"></span>
+        <!-- VERIFICATION FORM -->
 
-<div>
-<b>Rejected</b>
-<small>score ≥ 0.75</small>
-</div>
+        <form id="claimForm" class="verify-card">
 
-</div>
+            <div class="card-title">
 
-</div>
+                <div>
+                    <span class="mini-label">
+                        NEW VERIFICATION
+                    </span>
 
-</div>
+                    <h3>
+                        Carbon claim
+                    </h3>
+                </div>
 
+                <span class="secure-badge">
+                    API SECURED
+                </span>
 
-<form id="claimForm" class="verify-card">
+            </div>
 
-<div class="card-title">
 
-<div>
+            <label>
+                Household ID
 
-<span class="mini-label">
-NEW VERIFICATION
-</span>
+                <input
+                    id="householdId"
+                    value="HH001"
+                    placeholder="e.g. HH001"
+                    required
+                >
+            </label>
 
-<h3>
-Carbon claim
-</h3>
 
-</div>
+            <div class="two-col">
 
-<span class="secure-badge">
-API SECURED
-</span>
+                <label>
+                    Period start
 
-</div>
+                    <input
+                        id="periodStart"
+                        type="datetime-local"
+                        required
+                    >
+                </label>
 
 
-<label>
+                <label>
+                    Period end
 
-Household ID
+                    <input
+                        id="periodEnd"
+                        type="datetime-local"
+                        required
+                    >
+                </label>
 
-<input
-id="householdId"
-value="HH001"
-placeholder="e.g. HH001"
-required
->
+            </div>
 
-</label>
 
+            <label>
+                API key
 
-<div class="two-col">
+                <input
+                    id="apiKey"
+                    type="password"
+                    placeholder="Enter X-API-Key"
+                    autocomplete="off"
+                >
 
-<label>
+                <small class="field-note">
+                    Used only for the request; not displayed in results.
+                </small>
 
-Period start
+            </label>
 
-<input
-id="periodStart"
-type="datetime-local"
-required
->
 
-</label>
+            <button
+                class="button primary full"
+                type="submit"
+            >
+                <span>Run verification</span>
+                <span class="button-arrow">→</span>
+            </button>
 
 
-<label>
+            <div
+                id="formError"
+                class="form-error"
+                hidden
+            ></div>
 
-Period end
+        </form>
 
-<input
-id="periodEnd"
-type="datetime-local"
-required
->
-
-</label>
-
-</div>
-
-
-<label>
-
-API key
-
-<input
-id="apiKey"
-type="password"
-placeholder="Enter X-API-Key"
-autocomplete="off"
->
-
-<small class="field-note">
-Used only for the request; not displayed in results.
-</small>
-
-</label>
-
-
-<button
-class="button primary full"
-type="submit"
->
-
-<span>
-Run verification
-</span>
-
-<span class="button-arrow">
-→
-</span>
-
-</button>
-
-
-<div
-id="formError"
-class="form-error"
-hidden
-></div>
-
-</form>
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      VERIFICATION RESULT
-========================= -->
+===================================================== -->
 
-<section
-id="result"
-class="result-section"
-hidden
->
+<section id="result" class="result-section" hidden>
 
-<div class="section-kicker">
-VERIFICATION RESULT
-</div>
+    <div class="section-kicker">
+        VERIFICATION RESULT
+    </div>
 
 
-<div class="result-card">
+    <div class="result-card">
 
-<div class="result-main">
+        <div class="result-main">
 
-<div>
+            <div>
 
-<span class="mini-label">
-DECISION
-</span>
+                <span class="mini-label">
+                    DECISION
+                </span>
 
-<h2 id="decisionText">
-—
-</h2>
+                <h2 id="decisionText">
+                    —
+                </h2>
 
-<p id="decisionSub">
-—
-</p>
+                <p id="decisionSub">
+                    —
+                </p>
 
-</div>
-
-
-<div
-class="score-ring"
-id="scoreRing"
->
-
-<span id="scoreValue">
-0.00
-</span>
-
-<small>
-fraud score
-</small>
-
-</div>
-
-</div>
+            </div>
 
 
-<div class="result-metrics">
+            <div
+                class="score-ring"
+                id="scoreRing"
+            >
+                <span id="scoreValue">
+                    0.00
+                </span>
 
-<div>
+                <small>
+                    fraud score
+                </small>
+            </div>
 
-<span>
-Household
-</span>
-
-<b id="resultHousehold">
-—
-</b>
-
-</div>
-
-
-<div>
-
-<span>
-CO₂e saved
-</span>
-
-<b id="resultCo2">
-—
-</b>
-
-</div>
+        </div>
 
 
-<div>
+        <div class="result-metrics">
 
-<span>
-Energy saved
-</span>
+            <div>
+                <span>Household</span>
+                <b id="resultHousehold">—</b>
+            </div>
 
-<b id="resultKwh">
-—
-</b>
+            <div>
+                <span>CO₂e saved</span>
+                <b id="resultCo2">—</b>
+            </div>
 
-</div>
+            <div>
+                <span>Energy saved</span>
+                <b id="resultKwh">—</b>
+            </div>
 
+            <div>
+                <span>Coverage</span>
+                <b id="resultCoverage">—</b>
+            </div>
 
-<div>
-
-<span>
-Coverage
-</span>
-
-<b id="resultCoverage">
-—
-</b>
-
-</div>
-
-</div>
+        </div>
 
 
-<details class="raw-details">
+        <details class="raw-details">
 
-<summary>
-View API response
-</summary>
+            <summary>
+                View API response
+            </summary>
 
-<pre id="rawResponse"></pre>
+            <pre id="rawResponse"></pre>
 
-</details>
+        </details>
 
-</div>
+    </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      HOW IT WORKS
-========================= -->
+===================================================== -->
 
 <section id="how" class="how-section">
 
-<div class="section-kicker">
-THE PIPELINE
-</div>
+    <div class="section-kicker">
+        THE PIPELINE
+    </div>
 
 
-<div class="how-heading">
+    <div class="how-heading">
 
-<h2>
-Built around evidence,<br>
-not a black box.
-</h2>
+        <h2>
+            Built around evidence,<br>
+            not a black box.
+        </h2>
 
-<p>
-Every stage has a specific job. The model is the gate, not the whole system.
-</p>
+        <p>
+            Every stage has a specific job.
+            The model is the gate, not the whole system.
+        </p>
 
-</div>
-
-
-<div class="steps">
-
-<article>
-
-<span>
-01
-</span>
-
-<h3>
-Ingest
-</h3>
-
-<p>
-Telemetry is validated and deduplicated before it enters the pipeline.
-</p>
-
-</article>
+    </div>
 
 
-<article>
+    <div class="steps">
 
-<span>
-02
-</span>
+        <article>
 
-<h3>
-Baseline
-</h3>
+            <span>01</span>
 
-<p>
-The first 30 days establish a household-specific hourly consumption profile.
-</p>
+            <h3>
+                Ingest
+            </h3>
 
-</article>
+            <p>
+                Telemetry is validated and deduplicated
+                before it enters the pipeline.
+            </p>
 
-
-<article>
-
-<span>
-03
-</span>
-
-<h3>
-Calculate
-</h3>
-
-<p>
-Gap-aware savings avoid inflating claims when telemetry is missing.
-</p>
-
-</article>
+        </article>
 
 
-<article>
+        <article>
 
-<span>
-04
-</span>
+            <span>02</span>
 
-<h3>
-Screen
-</h3>
+            <h3>
+                Baseline
+            </h3>
 
-<p>
-Household-relative features pass through an Isolation Forest anomaly gate.
-</p>
+            <p>
+                The first 30 days establish a
+                household-specific hourly consumption profile.
+            </p>
 
-</article>
+        </article>
 
-</div>
+
+        <article>
+
+            <span>03</span>
+
+            <h3>
+                Calculate
+            </h3>
+
+            <p>
+                Gap-aware savings avoid inflating claims
+                when telemetry is missing.
+            </p>
+
+        </article>
+
+
+        <article>
+
+            <span>04</span>
+
+            <h3>
+                Screen
+            </h3>
+
+            <p>
+                Household-relative features pass through
+                an Isolation Forest anomaly gate.
+            </p>
+
+        </article>
+
+    </div>
 
 </section>
 
 </main>
 
 
-<!-- =========================
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <footer>
 
-<div class="footer-brand">
-CARBON<span>X</span>
-</div>
+    <div class="footer-brand">
+        CARBON<span>X</span>
+    </div>
 
-<p>
-Carbon credit verification infrastructure · FastAPI · SQLAlchemy · Isolation Forest
-</p>
+    <p>
+        Carbon credit verification infrastructure ·
+        FastAPI · SQLAlchemy · Isolation Forest
+    </p>
 
-<a
-href="http://127.0.0.1:8000/docs"
-target="_blank"
->
-Open API documentation ↗
-</a>
+    <a
+        href="/docs"
+        target="_blank"
+    >
+        Open API documentation ↗
+    </a>
 
 </footer>
 
 
-<!-- Local JavaScript -->
-<script src="script.js"></script>
+<!-- Carbon-X JavaScript -->
+<script src="/static/script.js"></script>
 
 </body>
 </html>
