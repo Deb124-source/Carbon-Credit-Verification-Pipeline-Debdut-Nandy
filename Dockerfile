@@ -8,11 +8,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# Generate synthetic telemetry data
-# Load telemetry into the database
-# Train the fraud/anomaly detection model
+# Generate telemetry, load it into the database,
+# then train the fraud/anomaly model.
 RUN python generate_data.py \
-    && python scripts/load_data.py \
+    && python -m scripts.load_data \
     && python -m scripts.train_model
 
 EXPOSE 8000
