@@ -2,6 +2,10 @@
 
 Backend + ML take-home: ingest household telemetry, compute CO2e savings vs a per-household baseline, and score claims with an anomaly-detection fraud gate before notarization (stub).
 
+
+## Live Link: https://carbon-credit-verification-pipeline.onrender.com/
+
+
 ## Quick start
 
 ### Docker
