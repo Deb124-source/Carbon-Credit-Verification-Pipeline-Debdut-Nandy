@@ -3,11 +3,16 @@ FROM python:3.11-slim
 WORKDIR /app
 
 COPY requirements.txt .
+
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN python generate_data.py && python -m scripts.train_model
+# Generate synthetic telemetry, load it into the database,
+# then train the fraud/anomaly model.
+RUN python generate_data.py \
+    && python data/load_data.py \
+    && python -m scripts.train_model
 
 EXPOSE 8000
 
